@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1 class="text-center mt-5">Login</h1>
+    <div class="row justify-content-center mt-5">
+        <div class="col-md-6">
+            <form method="POST" action="">
+                {% csrf_token %}
+                {{ form.errors }}
+                <div class="mb-3 row">
+                    <label for="email" class="col-sm-2 col-form-label">Email</label>
+                    <div class="col-sm-6">
+                        <input type="email" name="email" placeholder="example@example.com" class="form-control">
+                    </div>
+                </div>
+                <div class="mb-3 row">
+                    <label for="inputPassword" class="col-sm-2 col-form-label">Password</label>
+                    <div class="col-sm-6">
+                        <input type="password" name="password" placeholder="Enter your password" class="form-control">
+                    </div>
+                </div>
+                {% for mesagge in messages %}
+                    <p>{{ mesagge }}</p>
+                {% endfor %}
+                <button class="btn btn-dark" type="submit" name="Create User">Login</button>
+            </form>
+        </div>
+    </div>
+{% endblock %}

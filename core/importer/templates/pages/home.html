@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <div class="row text-center mt-5">
+        <h1>Welcome to the Contact Importer</h1>
+        <p>The Best tool to manage your contacts.</p>
+    </div>
+    <div class="container text-center mt-5">
+        {% if messages %}
+            {% for message in messages %}
+                <p>{{ message }}</p>
+            {% endfor %}
+        {% else %}
+            {% if user.is_authenticated %}
+            {% else %}
+                <p>If you already have an account please <a href="{% url 'login' %}">Log in.</a></p>
+            {% endif %}
+        {% endif %}
+        <div>
+        </div>
+    </div>
+{% endblock %}
