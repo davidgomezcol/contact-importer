@@ -21,5 +21,9 @@ from django.conf.urls import include
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.home_view, name='home'),
-    path('', include("users.urls"))
+    path('', include("users.urls")),
+    path('', include("contacts.urls")),
+    path('', include("logs.urls")),
+    path('upload-file/', views.upload_file_view, name='upload-file'),
+    path('process-file', views.process_uploaded_file, name='process-file'),
 ]

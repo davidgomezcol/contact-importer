@@ -1,0 +1,39 @@
+{% block content %}
+    {% if fieldnames is not Empty %}
+        <div class="col-md-12 d-inline-flex mt-5">
+            <div class="me-2">File: {{ filename }}</div>
+            <form class="col-md-12 d-inline-flex"
+                    action="{% url 'process-file' %}"
+                    method="POST" enctype="multipart/form-data"
+            >
+                {% csrf_token %}
+                <div class="col-md-6">
+                    {% for field in fieldnames %}
+                        <select class="form-select mb-2" aria-label="Default select example">
+                            <option class="csv_fields" value="{{ field }}">{{ field }}</option>
+                        </select>
+                    {% endfor %}
+                </div>
+                <div class="col-md-6">
+                    {% for field in fieldnames %}
+                        <select name="correct_field"
+                                class="form-select ms-2 mb-2"
+                                aria-label="Default select example" required>
+                            <option value="">Select a Match</option>
+                            <option value="name">Name</option>
+                            <option value="birthday">Date of Birth</option>
+                            <option value="phone">Phone</option>
+                            <option value="address">Address</option>
+                            <option value="credit_card">Credit Card</option>
+                            <option value="email">Email</option>
+                        </select>
+                    {% endfor %}
+                </div>
+                <input hidden name="filename" id="filename" value={{ filename }}>
+                <div class="col-md-12 mt-5">
+                    <button class="btn btn-dark mb-5" type="submit">Submit</button>
+                </div>
+            </form>
+        </div>
+    {% endif %}
+{% endblock %}

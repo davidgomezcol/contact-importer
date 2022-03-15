@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% block content %}
+    <div class="row text-center mt-5">
+        <h1>Upload a CSV File</h1>
+        <div class="col-md-6 ms-5 mt-5">
+            {% if messages %}
+                {% for message in messages %}
+                    <p class="alert-danger">{{ message }}</p>
+                {% endfor %}
+            {% endif %}
+            <form action="{% url 'upload-file' %}" method="POST" enctype="multipart/form-data"
+                  class="form-horizontal">
+                {% csrf_token %}
+                <div class="input-group mb-3">
+                    <input type="file" name="csv_file" class="form-control" id="csv_file">
+                    <button class="input-group-text" for="csv_file">Upload</button>
+                </div>
+            </form>
+            {% include 'partials/file-columns.html' %}
+        </div>
+    </div>
+{% endblock %}

@@ -21,7 +21,7 @@ def register_view(request):
             messages.success(
                 request, 'User {} registered correctly'.format(username)
             )
-            return redirect('/')
+            return redirect('login')
 
     context = {'form': form}
     return render(request, 'pages/register.html', context)

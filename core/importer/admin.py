@@ -3,6 +3,8 @@ from django.contrib.auth.admin import UserAdmin as BaseUserAdmin
 from django.utils.translation import gettext as _
 
 from users import models
+from contacts.models import Contacts
+from logs.models import FilesStatus
 
 
 class UserAdmin(BaseUserAdmin):
@@ -28,3 +30,5 @@ class UserAdmin(BaseUserAdmin):
 
 
 admin.site.register(models.User, UserAdmin)
+admin.site.register(Contacts)
+admin.site.register(FilesStatus)

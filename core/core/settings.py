@@ -40,6 +40,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'importer',
     'users',
+    'contacts',
+    'logs',
 ]
 
 MIDDLEWARE = [
